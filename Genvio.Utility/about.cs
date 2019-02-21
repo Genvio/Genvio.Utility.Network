@@ -1,3 +1,5 @@
+//NuGet path: dotnet pack --output ../nupkgs /p:NuspecFile=../Genvio.Utility.1.10.0.nuspec
+
 using System;
 using System.IO;
 using System.Reflection;
@@ -8,7 +10,7 @@ namespace Genvio.Utility
 {
     public sealed class About
     {
-        private static StringBuilder stringBuilder;
+        private static StringBuilder stringBuilder = new StringBuilder();
         private static Assembly thisAssembly = Assembly.GetEntryAssembly();
 
         public static string Version
