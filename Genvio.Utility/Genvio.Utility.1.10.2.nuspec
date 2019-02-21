@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Genvio.Utility</id>
+    <version>1.10.1</version>
+    <authors>Antonio Luevano (antonio@genvio.net)</authors>
+    <owners>Genvio Inc.</owners>
+    <title>Genvio Utility for Network Functions</title>
+    <license type="file">license.txt</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Utility class and custom extension methods, this library is used to perform IP and network tasks in a .net core and .net application</description>
+  </metadata>
+  <files>
+    <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\resources\license.txt" target="license.txt" />
+    <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\resources\readme.txt" target="readme.txt" />
+  </files>
+</package>

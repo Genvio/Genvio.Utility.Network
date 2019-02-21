@@ -2,19 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyVersion>1.10.0.0</AssemblyVersion>
-    <FileVersion>1.10.0.0</FileVersion>
-    <Version>1.10.0.0</Version>
+    <AssemblyVersion>1.10.2.0</AssemblyVersion>
+    <FileVersion>1.10.2.0</FileVersion>
+    <Version>1.10.2.0</Version>
     <Company>Genvio Inc.</Company>
     <Authors>Antonio Luevano</Authors>
     <PackageProjectUrl></PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
     <PackageTags>Genvio Network Utility</PackageTags>
+    <Title>Genvio.Utility.Network</Title>
     <Copyright>Copyright ©2019 Genvio Inc.</Copyright>
     <Description>Utility class and custom extension methods, this library is used to perform IP and network tasks in a .net core and .net application</Description>
     <PackageLicenseUrl>http://opensource.org/licenses/MS-PL</PackageLicenseUrl>
     <NeutralLanguage>en</NeutralLanguage>
-    <RepositoryUrl>https://github.com/Genvio/InfoBloxHelper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Genvio/Genvio.Utility</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
@@ -23,11 +24,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Http\" />
-    <Folder Include="Result\" />
-    <Folder Include="Enums\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Network\" />
+    <Folder Include="Http\"/>
+    <Folder Include="Result\"/>
+    <Folder Include="Enums\"/>
+    <Folder Include="Extensions\"/>
+    <Folder Include="Network\"/>
   </ItemGroup>
 
   <ItemGroup>
