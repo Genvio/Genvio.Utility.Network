@@ -2,15 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Genvio.Utility</id>
-    <version>1.10.1</version>
+    <version>1.10.2</version>
+    <title>Genvio.Utility.Network</title>
     <authors>Antonio Luevano (antonio@genvio.net)</authors>
     <owners>Genvio Inc.</owners>
-    <title>Genvio Utility for Network Functions</title>
     <license type="file">license.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Utility class and custom extension methods, this library is used to perform IP and network tasks in a .net core and .net application</description>
+    <copyright>Copyright ©2019 Genvio Inc.</copyright>
+    <tags>Genvio Network Utility</tags>
+    <repository type="git" url="https://github.com/Genvio/Genvio.Utility" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.2" />
+    </dependencies>
   </metadata>
   <files>
+    <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\bin\Debug\netcoreapp2.2\Genvio.Utility.dll" target="lib\netcoreapp2.2\Genvio.Utility.dll" />
     <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\resources\license.txt" target="license.txt" />
     <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\resources\readme.txt" target="readme.txt" />
   </files>
