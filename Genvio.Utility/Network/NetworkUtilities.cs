@@ -218,19 +218,20 @@
                 return Result.Fail<bool>(cidrIpNull);
             }
 
-            var parseIp = ParseSingleIPv4Address(cidrIp);
+            var parts = cidrIp.Split('/');
+
+            if (parts.Length != 2)
+            {
+                return Result.Fail<bool>(cidrIpSplitError);
+            }
+
+            var parseIp = ParseSingleIPv4Address(parts[0]);
             if (parseIp.Failure)
             {
                 return Result.Fail<bool>(cidrIpParseError);
             }
 
             var cidrAddress = parseIp.Value;
-
-            var parts = cidrIp.Split('/');
-            if (parts.Length != 2)
-            {
-                return Result.Fail<bool>(cidrIpSplitError);
-            }
 
             if (!Int32.TryParse(parts[1], out var netmaskBitCount))
             {
