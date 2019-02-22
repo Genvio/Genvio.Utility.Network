@@ -39,7 +39,7 @@ namespace Genvio
 
         public static void ParseAddressFromCidrNotation()
         {
-            const string input = "192.168.2.0/24";
+            const string input = "192.168.2.0/23";
             var result = NetworkUtilities.ParseIPv4Addresses(input);
             var parsedIps = new List<IPAddress>();
             var parsedIp = string.Empty;
@@ -56,11 +56,11 @@ namespace Genvio
 
             Console.WriteLine(result.Success);
             Console.WriteLine(parsedIps.Count);
-            Console.WriteLine("192.168.2.0", parsedIp);
+            Console.WriteLine(parsedIp);
         }
         public static void VerifyIpAddressIsInCidrRange()
         {
-            var cidrRange1 = "192.168.2.0/24";
+            var cidrRange1 = "192.168.2.0/23";
             var cidrRange2 = "10.2.0.0/8";
 
             var ip1 = "192.168.2.2";

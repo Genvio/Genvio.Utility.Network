@@ -205,6 +205,113 @@
                 : Result.Fail<List<IPAddress>>("Input string did not contain any valid IPv4 addresses");
         }
 
+        public static Result<bool> ValidateCidrIp(string cidrIp)
+        {
+            var cidrIpNull = $"CIDR IP address was null or empty string, {cidrIp}";
+            var cidrIpParseError = $"Unable to parse IP address from input string {cidrIp}";
+            var cidrIpSplitError = $"cidrIp was not in the correct format:\nExpected: a.b.c.d/n\nActual: {cidrIp}";
+            var cidrMaskParseError1 = $"Unable to parse netmask bit count from {cidrIp}";
+            const string cidrMaskParseError2 = "Netmask bit count value is invalid, must be in range 0-32";
+
+            if (string.IsNullOrEmpty(cidrIp))
+            {
+                return Result.Fail<bool>(cidrIpNull);
+            }
+
+            var parseIp = ParseSingleIPv4Address(cidrIp);
+            if (parseIp.Failure)
+            {
+                return Result.Fail<bool>(cidrIpParseError);
+            }
+
+            var cidrAddress = parseIp.Value;
+
+            var parts = cidrIp.Split('/');
+            if (parts.Length != 2)
+            {
+                return Result.Fail<bool>(cidrIpSplitError);
+            }
+
+            if (!Int32.TryParse(parts[1], out var netmaskBitCount))
+            {
+                return Result.Fail<bool>(cidrMaskParseError1);
+            }
+
+            if (0 > netmaskBitCount || netmaskBitCount > 32)
+            {
+                return Result.Fail<bool>(cidrMaskParseError2);
+            }
+
+            return Result.Ok(true);
+        }
+
+        //This Function is Used to get Subnet based on NetMask(i.e 0-32)
+        public static Result<IPAddress> ParseIpv4Subnet(string netMask)
+        {
+            string subNetMask = string.Empty;
+            int calSubNet = 0;
+            double result = 0;
+            if (!string.IsNullOrEmpty(netMask))
+            {
+                calSubNet = 32 - Convert.ToInt32(netMask);
+                if (calSubNet >= 0 && calSubNet <= 8)
+                {
+                    for (int ipower = 0; ipower < calSubNet; ipower++)
+                    {
+                        result += Math.Pow(2, ipower);
+                    }
+                    double finalSubnet = 255 - result;
+                    subNetMask = "255.255.255." + Convert.ToString(finalSubnet);
+                }
+                else if (calSubNet > 8 && calSubNet <= 16)
+                {
+                    int secOctet = 16 - calSubNet;
+
+                    secOctet = 8 - secOctet;
+
+                    for (int ipower = 0; ipower < secOctet; ipower++)
+                    {
+                        result += Math.Pow(2, ipower);
+                    }
+                    double finalSubnet = 255 - result;
+                    subNetMask = "255.255." + Convert.ToString(finalSubnet) + ".0";
+                }
+                else if (calSubNet > 16 && calSubNet <= 24)
+                {
+                    int thirdOctet = 24 - calSubNet;
+
+                    thirdOctet = 8 - thirdOctet;
+
+                    for (int ipower = 0; ipower < thirdOctet; ipower++)
+                    {
+                        result += Math.Pow(2, ipower);
+                    }
+                    double finalSubnet = 255 - result;
+                    subNetMask = "255." + Convert.ToString(finalSubnet) + ".0.0";
+                }
+                else if (calSubNet > 24 && calSubNet <= 32)
+                {
+                    int fourthOctet = 32 - calSubNet;
+
+                    fourthOctet = 8 - fourthOctet;
+
+                    for (int ipower = 0; ipower < fourthOctet; ipower++)
+                    {
+                        result += Math.Pow(2, ipower);
+                    }
+                    double finalSubnet = 255 - result;
+                    subNetMask = Convert.ToString(finalSubnet) + ".0.0.0";
+                }
+            }
+
+            //return subNetMask;
+            var conversion = ConvertIPv4StringToBytes(subNetMask);
+
+            return conversion.Success
+                ? Result.Ok(new IPAddress(conversion.Value))
+                : Result.Fail<IPAddress>(conversion.Error);
+        }
+
         // true if ipAddress falls inside the range defined by cidrIp, example:
         // bool result = IsInCidrRange("192.168.2.3", "192.168.2.0/24"); // result = true
         public static Result<bool> IpAddressIsInRange(string checkIp, string cidrIp)
