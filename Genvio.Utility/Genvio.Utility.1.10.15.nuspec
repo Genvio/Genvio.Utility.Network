@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Genvio.Utility</id>
-    <version>1.10.9</version>
+    <version>1.10.15</version>
     <title>Genvio.Utility.Network</title>
     <authors>Antonio Luevano (antonio@genvio.net)</authors>
     <owners>Genvio Inc.</owners>
@@ -17,7 +17,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\bin\Debug\netcoreapp2.2\Genvio.Utility.dll" target="lib\netcoreapp2.2\Genvio.Utility.dll" />
+    <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\bin\Release\netcoreapp2.2\Genvio.Utility.dll" target="lib\netcoreapp2.2\Genvio.Utility.dll" />
     <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\resources\license.txt" target="license.txt" />
     <file src="D:\Projects\KPMG\IPUtilities\Genvio.Utility\resources\readme.txt" target="readme.txt" />
   </files>
